@@ -1,0 +1,22 @@
+[
+      {
+        "title": "Anasayfa",
+        "link": "/"
+      },
+      {
+        "title": "Hakkımızda",
+        "link": "/hakkimizda"
+      },
+      {
+        "title": "Hizmetler",
+        "link": "/hizmetler"
+      },
+      {
+        "title": "Blog",
+        "link": "/blog"
+      },
+      {
+        "title": "İletişim",
+        "link": "/iletisim"
+      }
+]

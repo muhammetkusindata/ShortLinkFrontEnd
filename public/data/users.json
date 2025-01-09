@@ -1,0 +1,52 @@
+[
+      {
+        "userID": 1,
+        "name": "Ali",
+        "surname": "Yılmaz",
+        "email": "ali.yilmaz@example.com",
+        "password": "securepassword123",
+        "created_at": "2023-01-01T12:00:00Z",
+        "is_active": true,
+        "role": "admin"
+      },
+      {
+        "userID": 2,
+        "name": "Ayşe",
+        "surname": "Kara",
+        "email": "ayse.kara@example.com",
+        "password": "securepassword456",
+        "created_at": "2023-01-05T12:00:00Z",
+        "is_active": true,
+        "role": "company_owner"
+      },
+      {
+        "userID": 3,
+        "name": "Mehmet",
+        "surname": "Demir",
+        "email": "mehmet.demir@example.com",
+        "password": "securepassword789",
+        "created_at": "2023-01-10T12:00:00Z",
+        "is_active": true,
+        "role": "user"
+      },
+      {
+        "userID": 4,
+        "name": "Fatma",
+        "surname": "Akman",
+        "email": "fatma.akman@example.com",
+        "password": "securepassword321",
+        "created_at": "2023-01-15T12:00:00Z",
+        "is_active": true,
+        "role": "user"
+      },
+      {
+        "userID": 5,
+        "name": "Ahmet",
+        "surname": "Çelik",
+        "email": "ahmet.celik@example.com",
+        "password": "securepassword654",
+        "created_at": "2023-01-20T12:00:00Z",
+        "is_active": true,
+        "role": "user"
+      }
+]
