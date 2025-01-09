@@ -10,8 +10,8 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-  const themeColor1=useSelector((state:RootState)=>state.templateColor.themeColor1);
-  const textColor1=useSelector((state:RootState)=>state.templateColor.textColor1);
+  const themeColor1=useSelector((state:RootState)=>state.themeColor.themeColor1);
+  const textColor1=useSelector((state:RootState)=>state.textColor.textColor1);
   return (
     <div>
         <Header textColor={textColor1} themeColor={themeColor1}/>

@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react'
 
 interface HeaderProps {
   themeColor: string;
-  textColor: string; // added property
+  textColor: string;
 }
 
 const Header: React.FC<HeaderProps> = ({ themeColor, textColor }) => {
@@ -23,6 +23,9 @@ const Header: React.FC<HeaderProps> = ({ themeColor, textColor }) => {
       .catch(error => console.error('Error fetching menu data:', error));
   }, []);
 
+  if (!themeColor || !textColor) {
+    return null;
+  }
 
   return (
     <header className={`${themeColor}`}>

@@ -4,7 +4,8 @@ import templateColorReducer from '@/app/redux/features/templateColorSlice';
 export const store = configureStore({
   reducer: {
     text: textReducer,
-    templateColor: templateColorReducer,
+    themeColor: templateColorReducer,
+    textColor: templateColorReducer,
   },
 });
 
