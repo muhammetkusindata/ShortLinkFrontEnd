@@ -7,7 +7,8 @@
         "password": "securepassword123",
         "created_at": "2023-01-01T12:00:00Z",
         "is_active": true,
-        "role": "admin"
+        "role": "admin",
+        "avatar": "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
       },
       {
         "userID": 2,
@@ -17,7 +18,8 @@
         "password": "securepassword456",
         "created_at": "2023-01-05T12:00:00Z",
         "is_active": true,
-        "role": "company_owner"
+        "role": "company_owner",
+        "avatar": "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
       },
       {
         "userID": 3,
@@ -27,7 +29,8 @@
         "password": "securepassword789",
         "created_at": "2023-01-10T12:00:00Z",
         "is_active": true,
-        "role": "user"
+        "role": "user",
+        "avatar": "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
       },
       {
         "userID": 4,
@@ -37,7 +40,8 @@
         "password": "securepassword321",
         "created_at": "2023-01-15T12:00:00Z",
         "is_active": true,
-        "role": "user"
+        "role": "user",
+        "avatar": "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
       },
       {
         "userID": 5,
@@ -47,6 +51,29 @@
         "password": "securepassword654",
         "created_at": "2023-01-20T12:00:00Z",
         "is_active": true,
-        "role": "user"
+        "role": "user",
+        "avatar": "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+      },
+      {
+        "userID": 6,
+        "name": "Admin",
+        "surname": "admin",
+        "email": "admin@admin.com",
+        "password": "admin",
+        "created_at": "2023-01-20T12:00:00Z",
+        "is_active": true,
+        "role": "admin",
+        "avatar": "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+      },
+      {
+        "userID": 7,
+        "name": "Muhammet",
+        "surname": "KUŞ",
+        "email": "muhammetkus@admin.com",
+        "password": "admin",
+        "created_at": "2023-01-20T12:00:00Z",
+        "is_active": true,
+        "role": "admin",
+        "avatar": "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
       }
 ]

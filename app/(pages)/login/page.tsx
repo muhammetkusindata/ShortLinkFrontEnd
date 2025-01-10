@@ -1,21 +1,33 @@
 "use client";
-import React, { useState } from 'react';
-import users from '../../../public/data/users.json'; // Import user data
+import React, { useState, useEffect } from 'react';
+import { getCsrfToken, signIn } from 'next-auth/react';
 
 const page = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [csrfToken, setCsrfToken] = useState<string | undefined>(undefined);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  useEffect(() => {
+    const fetchCsrfToken = async () => {
+      const token = await getCsrfToken();
+      setCsrfToken(token);
+    };
+    fetchCsrfToken();
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const user = users.find(user => user.email == email && user.password == password);
-    if (user) {
-      
-      sessionStorage.setItem('user', JSON.stringify(user));
-      window.location.href = '/myaccount'; 
+    const result = await signIn('credentials', {
+      redirect: false,
+      username: email,
+      password,
+    });
+
+    if (result?.error) {
+      setError(`Error: ${result.error}`);
     } else {
-      setError('Invalid email or password');
+      window.location.href = '/myaccount';
     }
   };
 
@@ -33,7 +45,8 @@ const page = () => {
       </div>
 
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form method="post" action="/api/auth/callback/credentials" className="space-y-6">
+          <input name="csrfToken" type="hidden" defaultValue={csrfToken || ''} />
           <div>
             <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
               Email address
@@ -41,7 +54,7 @@ const page = () => {
             <div className="mt-2">
               <input
                 id="email"
-                name="email"
+                name="username"
                 type="email"
                 required
                 autoComplete="email"

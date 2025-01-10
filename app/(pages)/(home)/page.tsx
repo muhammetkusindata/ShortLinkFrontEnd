@@ -2,7 +2,7 @@
 
 export default function Home() {
   return (
-    <div className="container mx-auto p-4 bg-gradient-to-r bg-[#F4EDD3] min-h-screen">
+    <div className="container mx-auto p-4 bg-gradient-to-r min-h-screen">
       <h1 className="text-4xl font-extrabold text-center mb-6 text-slate-800 drop-shadow-lg">
         URL Kısalt
       </h1>
