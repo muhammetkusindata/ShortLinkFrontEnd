@@ -1,5 +1,5 @@
 "use client";
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Footer from './Footer';
 import Header from './Header';
 import { useSelector } from 'react-redux';
@@ -10,13 +10,16 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-  const themeColor1=useSelector((state:RootState)=>state.themeColor.themeColor1);
-  const textColor1=useSelector((state:RootState)=>state.textColor.textColor1);
+  const themeColor1 = useSelector((state: RootState) => state.themeColor.themeColor1);
+  const textColor1 = useSelector((state: RootState) => state.textColor.textColor1);
+
+  
+
   return (
     <div>
-        <Header textColor={textColor1} themeColor={themeColor1}/>
-        <div className='container mx-auto red-500'>{children}</div>
-        <Footer textColor={textColor1} themeColor={themeColor1}/>
+      <Header/>
+      <div className='container mx-auto'>{children}</div>
+      <Footer />
     </div>
   )
 }

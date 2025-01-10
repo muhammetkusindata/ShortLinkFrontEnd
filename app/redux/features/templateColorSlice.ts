@@ -2,12 +2,10 @@ import { createSlice } from '@reduxjs/toolkit';
 
 interface templateColorState {
   themeColor1: string;
-  textColor1: string;
 }
 
 const initialState: templateColorState = {
   themeColor1: '[#FAFFC5]',
-  textColor1: '[#3A3960]',
 };
 
 export const templateColorSlice = createSlice({

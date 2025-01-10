@@ -6,6 +6,7 @@ import { use, useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { Provider } from 'react-redux';
 import { store } from '@/app/redux/store';
+import { SessionProvider } from 'next-auth/react';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,7 +41,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Provider store={store}>
-          <Layout>{children}</Layout>
+          <SessionProvider>
+            <Layout>{children}</Layout>
+          </SessionProvider>
         </Provider>
       </body>
     </html>

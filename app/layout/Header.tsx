@@ -1,20 +1,18 @@
 import { stat } from 'fs';
 import { Root } from 'postcss';
 import React, { useEffect, useState } from 'react'
+import { useSession, signIn, signOut } from 'next-auth/react';
 
 
-interface HeaderProps {
-  themeColor: string;
-  textColor: string;
-}
 
-const Header: React.FC<HeaderProps> = ({ themeColor, textColor }) => {
+const Header = () => {
   interface MenuItem {
     title: string;
     link: string;
   }
 
   const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
+  const { data: session } = useSession();
 
   useEffect(() => {
     fetch('/data/menu.json')
@@ -23,16 +21,13 @@ const Header: React.FC<HeaderProps> = ({ themeColor, textColor }) => {
       .catch(error => console.error('Error fetching menu data:', error));
   }, []);
 
-  if (!themeColor || !textColor) {
-    return null;
-  }
 
   return (
-    <header className={`${themeColor}`}>
+    <header className={`bg-[#4C585B]`}>
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <div className="flex-1 md:flex md:items-center md:gap-12">
-            <a className={`block text-${textColor} duration-300 hover:text-${textColor}/75`} href="#">
+            <a className={`block text-[#F4EDD3] duration-300 hover:text-[#F4EDD3]/75`} href="#">
               <span className="sr-only">Home</span>
               <svg className="h-8" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -48,7 +43,7 @@ const Header: React.FC<HeaderProps> = ({ themeColor, textColor }) => {
               <ul className="flex items-center gap-6 text-sm">
                 {menuItems.map((item, index) => (
                   <li key={index}>
-                    <a className={`text-${textColor} transition hover:text-${textColor}/75`} href={item.link}>
+                    <a className={`text-[#F4EDD3] transition hover:text-[#F4EDD3]/75`} href={item.link}>
                       {item.title}
                     </a>
                   </li>
@@ -58,16 +53,25 @@ const Header: React.FC<HeaderProps> = ({ themeColor, textColor }) => {
 
             <div className="flex items-center gap-4">
               <div className="sm:flex sm:gap-4">
-                <a
-                  className={`rounded-md bg-[#3A3960] px-5 py-2.5 text-sm font-medium text-${themeColor} shadow`}
-                  href="/login"
-                >
-                  Login
-                </a>
+                {session ? (
+                  <button
+                    className={`rounded-md bg-[#F4EDD3] px-5 py-2.5 text-sm font-medium text-[#4C585B] shadow`}
+                    onClick={() => signOut()}
+                  >
+                    Logout
+                  </button>
+                ) : (
+                  <button
+                    className={`rounded-md bg-[#F4EDD3] px-5 py-2.5 text-sm font-medium text-[#4C585B] shadow`}
+                    onClick={() => signIn()}
+                  >
+                    Login
+                  </button>
+                )}
 
                 <div className="hidden sm:flex">
                   <a
-                    className={`rounded-md bg-[#A9BFA8] px-5 py-2.5 text-sm font-medium text-${themeColor}`}
+                    className={`rounded-md bg-[#A9BFA8] px-5 py-2.5 text-sm font-medium text-[#4C585B]`}
                     href="register"
                   >
                     Register

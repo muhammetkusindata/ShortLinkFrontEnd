@@ -1,11 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import textReducer from '@/app/redux/features/textSlice';
-import templateColorReducer from '@/app/redux/features/templateColorSlice';
+import themeColorReducer from '@/app/redux/features/themeColorSlice';
+import textColorReducer from '@/app/redux/features/textColorSlice';
 export const store = configureStore({
   reducer: {
     text: textReducer,
-    themeColor: templateColorReducer,
-    textColor: templateColorReducer,
+    themeColor: themeColorReducer,
+    textColor: textColorReducer,
   },
 });
 
