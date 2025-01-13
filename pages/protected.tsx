@@ -22,10 +22,8 @@ export default function ProtectedPage({ children }: { children: ReactNode }) {
   }
 
   return (
-    <div>
-      <p>Welcome, {session?.user?.name}!</p>
+    <div className='my-5'>
       {children}
-      <button onClick={() => signOut()}>Sign out</button>
     </div>
   );
 } 

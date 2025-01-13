@@ -68,7 +68,7 @@ const page = () => {
 
           <p className="mt-10 text-center text-sm/6 text-gray-500">
             Have an account?{' '}
-            <a href="/Login" className="font-semibold text-indigo-600 hover:text-indigo-500">
+            <a href="/login" className="font-semibold text-indigo-600 hover:text-indigo-500">
               Login
             </a>
           </p>

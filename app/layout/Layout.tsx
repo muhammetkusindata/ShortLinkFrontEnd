@@ -16,14 +16,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   const { data: session, status } = useSession();
 
-  useEffect(() => {
-    if (status === "authenticated") {
-      console.log("Giriş yapıldı:", session.user);
-    } else if (status === "unauthenticated") {
-      console.log("Giriş yapılmadı.");
-    }
-  }, [status, session]);
-
   return (
     <div>
       <Header/>

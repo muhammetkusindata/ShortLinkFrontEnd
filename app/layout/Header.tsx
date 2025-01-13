@@ -6,12 +6,18 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../redux/store';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { IoMdLogIn } from 'react-icons/io';
+import { MdAccountCircle } from 'react-icons/md';
+import { IoMenu, IoSettingsOutline } from 'react-icons/io5';
+import { RiMenu2Fill } from 'react-icons/ri';
+import { AiOutlineLogin } from 'react-icons/ai';
 
 const Header = () => {
 
     interface MenuItem {
         title: string;
         link: string;
+        icon?: string;
       }
     
       const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
@@ -25,11 +31,17 @@ const Header = () => {
           .catch(error => console.error('Error fetching menu data:', error));
       }, []);
 
+      const parseIcon = (iconString: string) => {
+        const div = document.createElement('div');
+        div.innerHTML = iconString.trim();
+        return div.firstChild;
+      };
+
       console.log(session?.user);
       
       
   return (
-    <header className="bg-[#4C585B]">
+    <header className="bg-template1">
   <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
     <div className="flex h-16 items-center justify-between">
       <div className="md:flex md:items-center md:gap-12">
@@ -48,37 +60,30 @@ const Header = () => {
         <nav aria-label="Global">
           <ul className="flex items-center gap-6 text-sm">
           {menuItems.map((item, index) => (
-                  <li key={index}>
-                    <a className={`text-[#F4EDD3] transition hover:text-[#F4EDD3]/75`} href={item.link}>
-                      {item.title}
-                    </a>
-                  </li>
-                ))}
+  <li className='flex' key={index}>
+
+    <a className={`text-[#F4EDD3] transition hover:text-[#F4EDD3]/75`} href={item.link}>
+      {item.title}
+    </a>
+  </li>
+))}
           </ul>
         </nav>
       </div>
       
       <div className="flex items-center gap-4">
-      {session&&<button onClick={()=>setToggleMenu(!toggleMenu)} className={`${!session?"hidden":"text-[#F4EDD3] transition hover:text-[#F4EDD3]/75"}`}>{session?.user?.name?.split(" ",1)}!</button>}
+      {session&&<button onClick={()=>setToggleMenu(!toggleMenu)} className={`${!session?"hidden":"text-[#F4EDD3] transition hover:text-[#F4EDD3]/75"}`}>Hello {session?.user?.name?.split(" ",1)}!</button>}
         {!session ? (
-          <>
-          
           <div className="sm:flex sm:gap-4">
+            <div className='flex justify-center items-center'>
             <a
-              className="rounded-md bg-[#A5BFCC] px-5 py-2.5 text-sm font-medium text-[#4C585B] shadow"
+              className="rounded-full bg-[#A5BFCC] flex justify-center items-center text-template1 duration-200 hover:text-template1/75"
               href="/login"
             >
-              Login
+              <MdAccountCircle className='text-4xl'/>
             </a>
-            <div className="hidden sm:flex">
-              <a
-                className="rounded-md bg-[#A5BFCC] px-5 py-2.5 text-sm font-medium text-[#4C585B] shadow"
-                href="/register"
-              >
-                Register
-              </a>
             </div>
-          </div></>
+          </div>
         ) : (
           <div className="hidden md:relative md:block items-center">
           <button
@@ -100,7 +105,7 @@ const Header = () => {
           >
             <div className="p-2">
               <Link
-                href="myaccount"
+                href="/settings"
                 className="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700"
                 role="menuitem"
               >
@@ -155,18 +160,48 @@ const Header = () => {
         )}
 
         <div className="block md:hidden">
-          <button className="rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="size-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
+          
+
+          <div className="drawer drawer-end">
+  <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
+  <div className="drawer-content">
+    {/* Page content here */}
+    <label htmlFor="my-drawer-4" className="drawer-button btn rounded bg-templateColor1  text-template1 transition ">
+    <RiMenu2Fill className='text-2xl'  />
+          </label>
+  </div>
+  <div className="drawer-side z-50">
+    <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
+    <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
+    {menuItems.map((item, index) => (
+                  <li key={index}>
+                    <a className={`text-template1 text-3xl font-thin`} href={item.link}>
+                      {item.title}
+                    </a>
+                  </li>
+                ))}
+    {
+      session&&<div className='flex flex-col mt-5'>
+      <li>
+        <a className={`text-template1 text-3xl font-thin`} href="/settings"><IoSettingsOutline />
+        <span>Settings</span></a>
+      </li>
+      <li>
+        <button onClick={() => {signOut()}} className={`text-template1 text-3xl font-thin`}><AiOutlineLogin /> <span>Log Out</span></button>
+      </li>
+      </div>
+      
+      
+    }
+                
+
+      
+    </ul>
+  </div>
+</div>
+
+
+
         </div>
       </div>
     </div>

@@ -18,7 +18,7 @@ const Footer = () => {
   }, []);
 
   return (
-    <footer className={`bg-[#4C585B]`}>
+    <footer className={`bg-template1`}>
       <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="flex justify-center text-[#F4EDD3]">
           <svg className="h-8" viewBox="0 0 118 24" fill="none" xmlns="http://www.w3.org/2000/svg">

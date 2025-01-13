@@ -25,16 +25,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
 
-  /*
-  const [loginOrRegister, setLoginOrRegister] = useState(false);
-  const pathname = usePathname();
-
-  useEffect(() => {
-    (pathname == "/login" || pathname == "/register")&& setLoginOrRegister(true);
-  }, [pathname]);
-  */
-
-
   return (
     <html lang="en">
       <body
